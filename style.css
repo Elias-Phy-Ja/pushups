@@ -1,0 +1,990 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&family=Space+Mono:wght@400;700&display=swap");
+
+:root {
+  --bg: #0a0d0f;
+  --panel: #12181b;
+  --panel-2: #182024;
+  --line: #263238;
+  --ink: #e8f0f2;
+  --muted: #6b7d84;
+  --led: #00e676; /* Timing-Screen-LED */
+  --led-dim: #00e67622;
+  --warn: #ff5252;
+  --amber: #ffb300;
+  --display: "Archivo", system-ui, sans-serif;
+  --mono: "Space Mono", ui-monospace, monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--display);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+#app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- Topbar --- */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--line);
+  background: var(--panel);
+}
+
+.brand {
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  font-size: 18px;
+}
+.brand .dot {
+  color: var(--led);
+}
+
+.topbar .who {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--muted);
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+/* --- Auth screen --- */
+.auth-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 380px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 32px 28px;
+}
+
+.auth-eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  color: var(--led);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.auth-title {
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1.05;
+  margin-bottom: 24px;
+}
+
+label {
+  display: block;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 16px 0 6px;
+}
+
+input {
+  width: 100%;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  padding: 12px 14px;
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 15px;
+}
+input:focus {
+  outline: none;
+  border-color: var(--led);
+}
+
+.btn {
+  width: 100%;
+  margin-top: 24px;
+  padding: 14px;
+  background: var(--led);
+  color: #05130a;
+  border: none;
+  border-radius: 3px;
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 15px;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+.btn:hover {
+  filter: brightness(1.08);
+}
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  padding: 10px 16px;
+  border-radius: 3px;
+  font-family: var(--mono);
+  font-size: 12px;
+  cursor: pointer;
+}
+.btn-ghost:hover {
+  border-color: var(--led);
+}
+
+.switch {
+  margin-top: 18px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--muted);
+}
+.switch a {
+  color: var(--led);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.error {
+  margin-top: 16px;
+  padding: 10px 12px;
+  background: #ff525215;
+  border: 1px solid #ff525240;
+  border-radius: 3px;
+  color: var(--warn);
+  font-family: var(--mono);
+  font-size: 13px;
+}
+
+/* --- Placeholder dashboard --- */
+.main {
+  flex: 1;
+  padding: 32px 20px;
+  max-width: 640px;
+  width: 100%;
+  margin: 0 auto;
+}
+.placeholder {
+  border: 1px dashed var(--line);
+  border-radius: 4px;
+  padding: 40px;
+  text-align: center;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 14px;
+}
+
+/* --- Topbar erweitert --- */
+.brand-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.brand {
+  text-decoration: none;
+  color: var(--ink);
+}
+.back {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 22px;
+  line-height: 1;
+}
+.back:hover {
+  color: var(--led);
+}
+
+/* --- Page heads --- */
+.main-narrow {
+  max-width: 460px;
+}
+.page-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 28px;
+}
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--led);
+  margin-bottom: 8px;
+}
+.page-title {
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 1;
+}
+.btn-inline {
+  width: auto;
+  margin: 0;
+  padding: 10px 18px;
+  font-size: 13px;
+}
+
+/* --- Project cards --- */
+.card-grid {
+  display: grid;
+  gap: 14px;
+}
+.proj-card {
+  display: block;
+  text-decoration: none;
+  color: var(--ink);
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 20px;
+  transition: border-color 0.15s;
+}
+.proj-card:hover {
+  border-color: var(--led);
+}
+.proj-name {
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+.proj-meta {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--muted);
+  display: flex;
+  gap: 8px;
+}
+.proj-meta .sep {
+  color: var(--line);
+}
+.proj-target {
+  font-family: var(--mono);
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--led);
+  margin: 10px 0;
+  letter-spacing: -0.02em;
+}
+.proj-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--muted);
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+}
+.code {
+  font-family: var(--mono);
+  letter-spacing: 0.15em;
+  color: var(--ink);
+  background: var(--panel-2);
+  padding: 3px 8px;
+  border-radius: 3px;
+}
+
+/* --- Segmented control --- */
+.seg {
+  display: flex;
+  gap: 6px;
+  margin-top: 6px;
+}
+.seg-opt {
+  flex: 1;
+  padding: 11px;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 13px;
+  cursor: pointer;
+}
+.seg-opt.active {
+  border-color: var(--led);
+  color: var(--led);
+  background: var(--led-dim);
+}
+.hint {
+  margin-top: 10px;
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+.hint b {
+  color: var(--led);
+}
+
+/* --- Project detail --- */
+.target-big {
+  font-family: var(--mono);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--led);
+  margin: 8px 0 24px;
+}
+.invite-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 16px 18px;
+  margin-bottom: 28px;
+}
+.invite-label {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.code-lg {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+}
+.section-head {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+.member-list {
+  display: grid;
+  gap: 8px;
+}
+.member {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  padding: 12px 16px;
+  font-size: 15px;
+}
+.badge {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--led);
+  border: 1px solid var(--led);
+  padding: 2px 8px;
+  border-radius: 3px;
+}
+
+/* --- Kamera --- */
+.cam-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: #000;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+.cam-wrap video,
+.cam-wrap canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scaleX(-1); /* Spiegeln wie ein Selfie */
+}
+.cam-count {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-family: var(--mono);
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--led);
+  text-shadow: 0 0 12px #000, 0 0 24px #000;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.cam-status {
+  font-family: var(--mono);
+  font-size: 14px;
+  color: var(--muted);
+  text-align: center;
+  margin-bottom: 16px;
+  min-height: 20px;
+}
+.btn-warn {
+  background: var(--warn);
+  color: #fff;
+}
+.done-banner {
+  background: var(--led-dim);
+  border: 1px solid var(--led);
+  border-radius: 4px;
+  padding: 16px 18px;
+  font-family: var(--mono);
+  font-size: 16px;
+  color: var(--led);
+}
+.done-banner b {
+  font-size: 20px;
+}
+
+/* --- Leaderboard --- */
+.board {
+  display: grid;
+  gap: 8px;
+}
+.board-row {
+  display: grid;
+  grid-template-columns: 28px 1fr auto auto;
+  align-items: center;
+  gap: 12px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  padding: 12px 16px;
+}
+.rank {
+  font-family: var(--mono);
+  font-weight: 700;
+  color: var(--muted);
+}
+.board-name {
+  font-size: 15px;
+  font-weight: 600;
+}
+.you {
+  color: var(--led);
+  font-weight: 400;
+  font-size: 13px;
+}
+.board-total {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--muted);
+}
+.pill {
+  font-family: var(--mono);
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 3px;
+  border: 1px solid;
+}
+.pill-ok {
+  color: var(--led);
+  border-color: var(--led);
+  background: var(--led-dim);
+}
+.pill-partial {
+  color: var(--amber);
+  border-color: var(--amber);
+  background: #ffb30015;
+}
+.pill-open {
+  color: var(--muted);
+  border-color: var(--line);
+}
+
+/* --- Dashboard head actions --- */
+.head-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* --- Invite box mit Kopier-Button --- */
+.invite-box {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 16px 18px;
+}
+.invite-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+.btn-copy {
+  width: 100%;
+  padding: 12px;
+  word-break: break-all;
+}
+
+/* --- Verlaufs-Grid --- */
+.grid-legend {
+  float: right;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  text-transform: none;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.grid-legend .lg {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  display: inline-block;
+  margin-left: 8px;
+}
+.lg-done { background: var(--led); }
+.lg-partial { background: var(--amber); }
+.lg-missed { background: var(--warn); }
+.lg-open { background: var(--panel-2); border: 1px solid var(--line); }
+
+.grid-scroll {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--panel);
+  padding: 12px;
+}
+.grid-head,
+.grid-row {
+  display: flex;
+  align-items: center;
+}
+.grid-name-col {
+  flex: 0 0 96px;
+  font-size: 12px;
+  font-weight: 600;
+  padding-right: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.grid-days {
+  display: flex;
+  gap: 3px;
+}
+.grid-daylabel {
+  flex: 0 0 18px;
+  font-family: var(--mono);
+  font-size: 8px;
+  color: var(--muted);
+  text-align: center;
+  transform: rotate(-60deg);
+  transform-origin: center;
+  height: 28px;
+  line-height: 1;
+}
+.grid-row {
+  margin-top: 3px;
+}
+.cell {
+  flex: 0 0 18px;
+  height: 18px;
+  border-radius: 3px;
+  background: var(--panel-2);
+}
+.cell-done { background: var(--led); }
+.cell-partial { background: var(--amber); }
+.cell-missed { background: var(--warn); opacity: 0.55; }
+.cell-open {
+  background: var(--panel-2);
+  border: 1px dashed var(--line);
+}
+
+/* ============================================================
+   UI-Ausbau: mehr Charakter, Motorsport-Details, Feinschliff
+   ============================================================ */
+
+/* Feiner Startampel-Streifen unter der Topbar */
+.topbar {
+  position: relative;
+}
+.topbar::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    var(--led) 0%,
+    var(--led) 8%,
+    transparent 8%,
+    transparent 100%
+  );
+  opacity: 0.6;
+}
+
+/* Logo bekommt einen kleinen pulsierenden Punkt wie eine Statusleuchte */
+.brand .dot {
+  display: inline-block;
+  animation: pulse 2.4s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+/* Sanftes Einblenden beim Seitenaufbau */
+.main {
+  animation: fadeUp 0.4s ease both;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Leeres Board: einladender statt nur ein grauer Kasten */
+.empty-state {
+  border: 1px dashed var(--line);
+  border-radius: 8px;
+  padding: 48px 32px;
+  text-align: center;
+  background:
+    radial-gradient(circle at 50% 0%, var(--led-dim) 0%, transparent 60%),
+    var(--panel);
+}
+.empty-state .empty-icon {
+  font-family: var(--mono);
+  font-size: 40px;
+  color: var(--led);
+  margin-bottom: 16px;
+  letter-spacing: 0.1em;
+}
+.empty-state .empty-title {
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+.empty-state .empty-sub {
+  color: var(--muted);
+  font-size: 14px;
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+.empty-state .btn {
+  display: inline-block;
+  width: auto;
+  margin: 0;
+  padding: 12px 28px;
+  text-decoration: none;
+}
+
+/* Projektkarten: Nummer-Badge und mehr Tiefe */
+.proj-card {
+  position: relative;
+  overflow: hidden;
+}
+.proj-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--led);
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+.proj-card:hover::before {
+  opacity: 1;
+}
+.proj-target {
+  transition: transform 0.15s;
+}
+.proj-card:hover .proj-target {
+  transform: translateX(2px);
+}
+
+/* Buttons: dezenter Druck-Effekt */
+.btn, .btn-ghost {
+  transition: filter 0.15s, transform 0.08s, border-color 0.15s;
+}
+.btn:active, .btn-ghost:active {
+  transform: scale(0.98);
+}
+
+/* Zähler-Zahl auf der Kamera-Seite: Monospace-Timing-Optik */
+.cam-count {
+  font-variant-numeric: tabular-nums;
+  transition: transform 0.1s;
+}
+
+/* Leaderboard-Zeilen: Hover hebt hervor, Rang 1 bekommt Akzent */
+.board-row {
+  transition: border-color 0.15s, background 0.15s;
+}
+.board-row:hover {
+  border-color: var(--muted);
+}
+.board-row:first-child .rank {
+  color: var(--led);
+}
+
+/* Done-Banner bekommt einen Haken-Look */
+.done-banner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.done-banner::before {
+  content: "✓";
+  font-size: 22px;
+  font-weight: 800;
+}
+
+/* Formular-Felder: fokussiert dezent leuchten */
+input:focus {
+  box-shadow: 0 0 0 3px var(--led-dim);
+}
+
+/* Segmented-Buttons: weicher Übergang */
+.seg-opt {
+  transition: all 0.15s;
+}
+
+/* Verlaufs-Zellen: Hover zeigt dass man drauffahren kann */
+.cell {
+  transition: transform 0.1s;
+  cursor: default;
+}
+.cell:hover {
+  transform: scale(1.25);
+}
+
+/* Scrollbar im Grid dezent im Theme */
+.grid-scroll::-webkit-scrollbar {
+  height: 8px;
+}
+.grid-scroll::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+.grid-scroll::-webkit-scrollbar-thumb {
+  background: var(--line);
+  border-radius: 4px;
+}
+.grid-scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--muted);
+}
+
+/* Auth-Karte: subtiler Lichtschein oben */
+.auth-card {
+  position: relative;
+  background:
+    radial-gradient(circle at 50% -20%, var(--led-dim) 0%, transparent 50%),
+    var(--panel);
+}
+
+/* Mobil: Topbar und Abstände anpassen */
+@media (max-width: 520px) {
+  .page-title { font-size: 26px; }
+  .page-head { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .head-actions { width: 100%; }
+  .head-actions .btn-inline { flex: 1; text-align: center; }
+  .topbar .who span { display: none; }
+  .target-big { font-size: 24px; }
+}
+
+/* Banner wenn heute gemacht, aber Ziel nicht erreicht */
+.partial-banner {
+  background: #ffb3001a;
+  border: 1px solid var(--amber);
+  border-radius: 4px;
+  padding: 16px 18px;
+  font-family: var(--mono);
+  font-size: 15px;
+  color: var(--amber);
+}
+.partial-banner b {
+  font-size: 20px;
+}
+
+/* --- Bearbeiten-Link neben Titel --- */
+.title-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+}
+.edit-link {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--muted);
+  text-decoration: none;
+  border: 1px solid var(--line);
+  padding: 6px 14px;
+  border-radius: 3px;
+  white-space: nowrap;
+  transition: border-color 0.15s, color 0.15s;
+}
+.edit-link:hover {
+  border-color: var(--led);
+  color: var(--led);
+}
+
+/* --- Gefahren-Zone auf der Bearbeiten-Seite --- */
+.danger-zone {
+  margin-top: 48px;
+  padding: 20px;
+  border: 1px solid #ff525240;
+  border-radius: 4px;
+  background: #ff52520a;
+}
+.danger-title {
+  font-weight: 800;
+  color: var(--warn);
+  margin-bottom: 6px;
+}
+.danger-sub {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+.btn-danger {
+  width: 100%;
+  padding: 13px;
+  background: transparent;
+  border: 1px solid var(--warn);
+  color: var(--warn);
+  border-radius: 3px;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.btn-danger:hover {
+  background: var(--warn);
+  color: #fff;
+}
+.btn-danger.armed {
+  background: var(--warn);
+  color: #fff;
+  animation: pulse 0.8s ease-in-out infinite;
+}
+.btn-danger:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ============================================================
+   Verlaufs-Grid auf dem Handy lesbar machen
+   ============================================================ */
+@media (max-width: 640px) {
+  /* Name kommt ueber die Felder statt daneben, nutzt die Breite besser */
+  .grid-head {
+    display: none; /* Datumskopf weglassen, spart Platz; Tooltip zeigt Datum */
+  }
+  .grid-row {
+    display: block;
+    margin-top: 0;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .grid-row:last-child {
+    border-bottom: none;
+  }
+  .grid-name-col {
+    flex: none;
+    display: block;
+    width: 100%;
+    padding: 0 0 8px 0;
+    font-size: 13px;
+    white-space: normal;      /* voller Name, kein Abschneiden */
+    overflow: visible;
+    text-overflow: clip;
+  }
+  .grid-days {
+    flex-wrap: wrap;          /* Felder brechen in mehrere Reihen um */
+    gap: 4px;
+  }
+  .cell {
+    flex: 0 0 22px;           /* etwas groesser fuer den Finger */
+    height: 22px;
+  }
+  .grid-scroll {
+    overflow-x: hidden;       /* kein seitliches Wegscrollen mehr noetig */
+  }
+}
+
+/* Tap-Info unter dem Verlaufs-Grid (vor allem fuers Handy) */
+.grid-tapinfo {
+  margin-top: 10px;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--muted);
+  min-height: 16px;
+}
+.cell.selected {
+  outline: 2px solid var(--ink);
+  outline-offset: 1px;
+}
+
+/* Anklickbarer Name in der Topbar */
+.who-name {
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.15s;
+  cursor: pointer;
+}
+.who-name:hover {
+  color: var(--led);
+}
+
+/* Erfolgsmeldung auf der Profilseite */
+.success-msg {
+  margin-top: 16px;
+  padding: 12px 14px;
+  background: var(--led-dim);
+  border: 1px solid var(--led);
+  border-radius: 3px;
+  color: var(--led);
+  font-family: var(--mono);
+  font-size: 13px;
+}
+
+/* Countdown vor dem Zaehlen */
+.cam-count.counting-down {
+  color: var(--amber);
+  font-size: 88px;
+}
+.countdown-note {
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 14px;
+  color: var(--amber);
+  padding: 12px;
+}
